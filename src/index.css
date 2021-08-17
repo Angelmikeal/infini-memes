@@ -1,14 +1,80 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #334;
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: hidden;
+  background-color: #131313;
+  color: #fff;
+}
+
+.App {
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  top: 0;
+}
+
+.navbar ul {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  list-style: none;
+  background-color: #0885EC;
+}
+
+.navbar ul li {
+  width: 25%;
+  display: flex;
+  justify-content: center;
+  border: solid 1px #000;
+}
+
+.navbar ul li:hover {
+  box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+  -webkit-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
+}
+
+.navbar ul li button {
+  width: 80%;
+  height: 60px;
+  border: 0px;;
+  background-color: transparent;
+  color: #fff;
+  font-size: 17px;
+}
+
+
+.feedList {
+  display: flex;
+  flex-wrap: wrap;
+  height: 100%;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.feedList div {
+  min-width: 310px;
+  width: 25%;
+  height: auto;
+  margin: 10px;
+  padding: 15px;
+}
+
+img {
+  object-fit: cover;
+  min-width: 280px;
+  width: 100%;
+  height: 400px;
 }
