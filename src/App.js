@@ -4,12 +4,12 @@ import useFetch from "./useFetch";
 
 function App() {
   const [feed, setFeed] = useState();
-  const [sub, setSub] = useState('animemes');
+  const [sub, setSub] = useState();
   useFetch(sub, setFeed);
 
   return (
     <div className="App">
-      <Navbar></Navbar>
+      <Navbar setSubFunc={setSub}></Navbar>
       <div className="feedList">
         {feed && 
           feed.map((obj, index) =>  {

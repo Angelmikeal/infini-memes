@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 
 const useFetch = (url, setFeed) => {
     useEffect(() => {
-        fetch(`https://www.reddit.com/r/${url}/top.json?t=all`)
+        fetch(`https://www.reddit.com/r/${url}/top.json?t=month`)
             .then((res) => {
                 if (!res.ok) {
                     throw new Error(`something went wrong ${res.status}`) 
@@ -18,7 +18,7 @@ const useFetch = (url, setFeed) => {
             .catch(err => {
                 console.log(err);
             })
-    }, []);
+    }, [url]);
 
 
 }

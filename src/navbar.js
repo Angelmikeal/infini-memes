@@ -1,24 +1,23 @@
 const Navbar = (props) => {
-    //const setFeed = props.setFeedFunc;
+    const setSub = props.setSubFunc;
 
     const handleFeedClick = (e) => {
-        console.log(e.target.innerText);
-        // switch (e.target.innerText) {
-        //     case "Twitter":
-        //         setFeed("");
-        //         break;
-        //     case "Anime":
-        //         setFeed("you clicked Anime memes");
-        //         break;
-        //     case "memes":
-        //         setFeed("you clicked memes");
-        //         break;
-        //     case "IRL memes":
-        //         setFeed("you clicked meIRL");
-        //         break;
-        //     default:
-        //         break;
-        // }
+        switch (e.target.innerText) {
+            case "Twitter":
+                setSub("Twitter_memes");
+                break;
+            case "Anime":
+                setSub("goodAnimemes");
+                break;
+            case "memes":
+                setSub("Dankmemes");
+                break;
+            case "IRL memes":
+                setSub("meIRL");
+                break;
+            default:
+                break;
+        }
     };
 
 
