@@ -1,20 +1,26 @@
 import { useEffect, useRef } from 'react';
 
-const useFetch = (url) => {
-    const memes = useRef([]);
+const useFetch = (url, setFeed) => {
     useEffect(() => {
-        fetch(`https://www.reddit.com/r/${url}.json?limit=20`)
-            .then(res => res.json())
+        fetch(`https://www.reddit.com/r/${url}/top.json?t=all`)
+            .then((res) => {
+                if (!res.ok) {
+                    throw new Error(`something went wrong ${res.status}`) 
+                } else {
+                    return res.json()
+                }
+
+            })
             .then(body => {
                 console.log(body);
-                memes.current = body.data.children;
+                setFeed(body.data.children);
             })
             .catch(err => {
                 console.log(err);
             })
     }, []);
 
-    console.log(memes.current)
+
 }
 
 export default useFetch;
