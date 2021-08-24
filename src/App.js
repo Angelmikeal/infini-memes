@@ -18,7 +18,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar sub={sub} setFeed={setFeed} setSub={setSub} subFeeds={subFeeds} after={after} setAfter={setAfter}></Navbar>
+      <Navbar sub={sub} setFeed={setFeed} setSub={setSub} subFeeds={subFeeds} setAfter={setAfter}></Navbar>
       <div className="feedList">
         {feed && 
           feed.map((obj, index) =>  {

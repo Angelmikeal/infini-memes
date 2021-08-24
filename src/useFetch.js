@@ -9,7 +9,7 @@ const useFetch = (sub, setFeed, subFeeds, after) => {
         if (isPending === false) {
             setIsPending(true);
 
-            fetch(`https://www.reddit.com/r/${sub}/hot.json?after=${after}`)
+            fetch(`https://www.reddit.com/r/${sub}/hot.json?limit=15&after=${after}`)
                 .then((res) => {
                     if (!res.ok) {
                         throw new Error(`something went wrong ${res.status}`)

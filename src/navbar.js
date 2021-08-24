@@ -1,47 +1,59 @@
 import nextBtn from '../src/forward-button.svg'
 import useFetch from './useFetch';
 
-const Navbar = ({setFeed, setSub, sub, subFeeds, after, setAfter}) => {
-    let next = subFeeds.twitter.after.current;
+const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
 
     const handleFeedClick = (e) => {
         switch (e.target.innerText) {
             case "Twitter":
                 if (sub !== "twitter_memes") {
-                    setFeed([]);
+                    setAfter('');
                     setSub("twitter_memes");
-                    next = subFeeds.twitter.after.current
                 }
                 break;
             case "Anime":
-                if (sub !== "goodAnimemes") {
-                    setFeed([]);
+                if (sub !== "goodanimemes") {
+                    setAfter('');
                     setSub("goodanimemes");
-                    next = subFeeds.anime.after.current
+
                 }
                 break;
             case "memes":
                 if (sub !== "dankmemes") {
-                    setFeed([]);
+                    setAfter('');
                     setSub("dankmemes");
-                    next = subFeeds.dankmemes.after.current
                 }
                 break;
             case "IRL memes":
                 if (sub !== "meIRL") {
-                    setFeed([]);
+                    setAfter('');
                     setSub("meIRL");
-                    next = subFeeds.meirl.after.current
+                    
                 }
-                break;         
+                break;
             default:
                 break;
         }
     };
 
     const handleNextClick = (e) => {
-        console.log(`you clicked the button this ${sub} sub page ${next}`)
-        setAfter(next);
+        switch (sub) {
+            case 'twitter_memes':
+                setAfter(subFeeds.twitter.after.current)
+                break;
+            case 'goodanimemes':
+                setAfter(subFeeds.anime.after.current)
+                break;
+            case 'dankmemes':
+                setAfter(subFeeds.dankmemes.after.current)
+                break;
+            case 'meIRL':
+                setAfter(subFeeds.meirl.after.current)
+                break;
+
+            default:
+                break;
+        }
     }
 
     return (
@@ -61,7 +73,7 @@ const Navbar = ({setFeed, setSub, sub, subFeeds, after, setAfter}) => {
                 </li>
             </ul>
 
-            
+
             <button onClick={handleNextClick} className="nextBtn">
                 <img src={nextBtn} alt="next-page" width="75px" height="75px" />
             </button>
