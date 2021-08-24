@@ -62,20 +62,31 @@ body {
   height: 100%;
   width: 100%;
   justify-content: space-around;
-  padding-top: 50px;
+  margin-top: 40px;
 }
 
 .feedList div {
-  min-width: 310px;
-  width: 25%;
+  min-width: 300px;
+  width: 20%;
   height: auto;
-  margin: 10px;
-  padding: 15px;
+  margin: 30px 10px;
+  display: flex;
+  align-items: center;
 }
 
-img {
+.feedList img {
   object-fit: fill;
-  min-width: 280px;
+  min-width: 300px;
   width: 65%;
-  height: 450px;
+  height: auto;
+}
+
+.nextBtn {
+   position: fixed;
+   bottom: 0;
+   right: 0;
+   margin: 20px 35px;
+   background-color: transparent;
+   border: 0px;
+   
 }
