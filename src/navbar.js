@@ -9,12 +9,14 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
                 if (sub !== "twitter_memes") {
                     setAfter('');
                     setSub("twitter_memes");
+                    window.scroll(0,0);
                 }
                 break;
             case "Anime":
                 if (sub !== "goodanimemes") {
                     setAfter('');
                     setSub("goodanimemes");
+                    window.scroll(0,0);
 
                 }
                 break;
@@ -22,12 +24,14 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
                 if (sub !== "dankmemes") {
                     setAfter('');
                     setSub("dankmemes");
+                    window.scroll(0,0);
                 }
                 break;
             case "IRL memes":
                 if (sub !== "meIRL") {
                     setAfter('');
                     setSub("meIRL");
+                    window.scroll(0,0);
                     
                 }
                 break;
@@ -54,6 +58,7 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
             default:
                 break;
         }
+        window.scroll(0,0);
     }
 
     return (
