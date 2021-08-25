@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-const useFetch = (sub, setFeed, subFeeds, after) => {
+const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError) => {
     const [isPending, setIsPending] = useState(false);
 
 
@@ -9,16 +9,17 @@ const useFetch = (sub, setFeed, subFeeds, after) => {
         if (isPending === false) {
             setIsPending(true);
 
-            fetch(`https://www.reddit.com/r/${sub}/hot.json?limit=15&after=${after}`)
+            fetch(`https://www.reddit.com/r/${sub}/hot.json?t=day&limit=15&after=${after}`)
                 .then((res) => {
                     if (!res.ok) {
-                        throw new Error(`something went wrong ${res.status}`)
+                        throw new Error(`Oops something went wrong ${res.status} please reload`)
                     } else {
                         return res.json()
                     }
 
                 })
                 .then(body => {
+                    setCallFail(false)
                     setFeed([]);
                     setFeed(body.data.children);
                     switch (sub) {
@@ -46,10 +47,16 @@ const useFetch = (sub, setFeed, subFeeds, after) => {
 
                 }).then(() => {
                     setIsPending(false);
-                    console.log(subFeeds, isPending);
                 })
-                .catch(err => {
-                    console.log(err);
+                .catch(error => {
+                    if (error.message === 'Failed to fetch') {
+                        setCallFail(true)
+                        setError(`Please check your internet connection and reload`);
+                    } else {
+                        setCallFail(true)
+                        setError(error.message);
+                    }
+
                 })
         }else {
             //do nothing

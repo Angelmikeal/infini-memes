@@ -1,5 +1,4 @@
 import nextBtn from '../src/forward-button.svg'
-import useFetch from './useFetch';
 
 const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
 
@@ -7,31 +6,58 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
         switch (e.target.innerText) {
             case "Twitter":
                 if (sub !== "twitter_memes") {
-                    setAfter('');
-                    setSub("twitter_memes");
-                    window.scroll(0,0);
+                    if (subFeeds.twitter.arr.current !== null) {
+                        console.log('i work', subFeeds.twitter.arr.current);
+                        setFeed([]);
+                        setFeed(subFeeds.twitter.arr.current)
+                    }else {
+                        setFeed([]);
+                        setAfter('');
+                        setSub("twitter_memes");
+                        window.scroll(0,0);
+                    }
                 }
                 break;
             case "Anime":
                 if (sub !== "goodanimemes") {
-                    setAfter('');
-                    setSub("goodanimemes");
-                    window.scroll(0,0);
-
+                    if (subFeeds.anime.arr.current !== null) {
+                        console.log('i work', subFeeds.anime.arr.current);
+                        setFeed([]);
+                        setFeed(subFeeds.anime.arr.current)
+                    }else {
+                        setFeed([]);
+                        setAfter('');
+                        setSub("goodanimemes");
+                        window.scroll(0,0);
+                    }
                 }
                 break;
             case "memes":
                 if (sub !== "dankmemes") {
-                    setAfter('');
-                    setSub("dankmemes");
-                    window.scroll(0,0);
+                    if (subFeeds.dankmemes.arr.current !== null) {
+                        setFeed([]);
+                        setFeed(subFeeds.dankmemes.arr.current)
+                        console.log('i work', subFeeds.dankmemes.arr.current);
+                    }else {
+                        setFeed([]);
+                        setAfter('');
+                        setSub("dankmemes");
+                        window.scroll(0,0);
+                    }
                 }
                 break;
             case "IRL memes":
                 if (sub !== "meIRL") {
-                    setAfter('');
-                    setSub("meIRL");
-                    window.scroll(0,0);
+                    if (subFeeds.meirl.arr.current !== null) {
+                        setFeed([]);
+                        setFeed(subFeeds.meirl.arr.current)
+                        console.log('i work', subFeeds.meirl.arr.current);
+                    }else {
+                        setFeed([]);
+                        setAfter('');
+                        setSub("meIRL");
+                        window.scroll(0,0);
+                    }
                     
                 }
                 break;
