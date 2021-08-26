@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 
-const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError) => {
+const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError, setLoading) => {
     const [isPending, setIsPending] = useState(false);
 
 
@@ -12,15 +12,16 @@ const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError) => {
             fetch(`https://www.reddit.com/r/${sub}/hot.json?t=day&limit=15&after=${after}`)
                 .then((res) => {
                     if (!res.ok) {
-                        throw new Error(`Oops something went wrong ${res.status} please reload`)
+                        throw new Error(`Oops something went wrong ${res.status} please reload ( ͡❛ ﹏ ͡❛)`)
                     } else {
                         return res.json()
                     }
 
                 })
                 .then(body => {
-                    setCallFail(false)
                     setFeed([]);
+                    setCallFail(false);
+                    setLoading(false);
                     setFeed(body.data.children);
                     switch (sub) {
                         case 'twitter_memes':
@@ -31,9 +32,9 @@ const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError) => {
                             subFeeds.anime.arr.current = body.data.children;
                             subFeeds.anime.after.current = body.data.after;
                             break;
-                        case 'dankmemes':
-                            subFeeds.dankmemes.arr.current = body.data.children;
-                            subFeeds.dankmemes.after.current = body.data.after;
+                        case 'memes':
+                            subFeeds.memes.arr.current = body.data.children;
+                            subFeeds.memes.after.current = body.data.after;
                             break;
                         case 'meIRL':
                             subFeeds.meirl.arr.current = body.data.children;
@@ -49,9 +50,11 @@ const useFetch = (sub, setFeed, subFeeds, after,  setCallFail, setError) => {
                     setIsPending(false);
                 })
                 .catch(error => {
+                    setIsPending(false);
+                    setLoading(false);
                     if (error.message === 'Failed to fetch') {
                         setCallFail(true)
-                        setError(`Please check your internet connection and reload`);
+                        setError(`Please check your internet connection and reload ( ͡❛ ﹏ ͡❛)`);
                     } else {
                         setCallFail(true)
                         setError(error.message);

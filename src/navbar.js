@@ -1,13 +1,14 @@
 import nextBtn from '../src/forward-button.svg'
 
-const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
+const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
 
     const handleFeedClick = (e) => {
+        removeActive(e.target);
+
         switch (e.target.innerText) {
             case "Twitter":
                 if (sub !== "twitter_memes") {
                     if (subFeeds.twitter.arr.current !== null) {
-                        console.log('i work', subFeeds.twitter.arr.current);
                         setFeed([]);
                         setFeed(subFeeds.twitter.arr.current)
                     }else {
@@ -21,10 +22,10 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
             case "Anime":
                 if (sub !== "goodanimemes") {
                     if (subFeeds.anime.arr.current !== null) {
-                        console.log('i work', subFeeds.anime.arr.current);
                         setFeed([]);
                         setFeed(subFeeds.anime.arr.current)
                     }else {
+                        setLoading(true);
                         setFeed([]);
                         setAfter('');
                         setSub("goodanimemes");
@@ -33,15 +34,15 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
                 }
                 break;
             case "memes":
-                if (sub !== "dankmemes") {
-                    if (subFeeds.dankmemes.arr.current !== null) {
+                if (sub !== "memes") {
+                    if (subFeeds.memes.arr.current !== null) {
                         setFeed([]);
-                        setFeed(subFeeds.dankmemes.arr.current)
-                        console.log('i work', subFeeds.dankmemes.arr.current);
+                        setFeed(subFeeds.memes.arr.current)
                     }else {
+                        setLoading(true);
                         setFeed([]);
                         setAfter('');
-                        setSub("dankmemes");
+                        setSub("memes");
                         window.scroll(0,0);
                     }
                 }
@@ -51,8 +52,8 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
                     if (subFeeds.meirl.arr.current !== null) {
                         setFeed([]);
                         setFeed(subFeeds.meirl.arr.current)
-                        console.log('i work', subFeeds.meirl.arr.current);
                     }else {
+                        setLoading(true);
                         setFeed([]);
                         setAfter('');
                         setSub("meIRL");
@@ -66,18 +67,31 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
         }
     };
 
+    const removeActive = (node) => {
+        const links = document.getElementsByClassName('btn');
+        const arr = [...links];
+        arr.forEach((element) => {
+            element.className = 'navlink btn';
+        });
+        node.className = 'active btn';
+    };
+
     const handleNextClick = (e) => {
         switch (sub) {
             case 'twitter_memes':
+                setLoading(true);
                 setAfter(subFeeds.twitter.after.current)
                 break;
             case 'goodanimemes':
+                setLoading(true);
                 setAfter(subFeeds.anime.after.current)
                 break;
-            case 'dankmemes':
-                setAfter(subFeeds.dankmemes.after.current)
+            case 'memes':
+                setLoading(true);
+                setAfter(subFeeds.memes.after.current)
                 break;
             case 'meIRL':
+                setLoading(true);
                 setAfter(subFeeds.meirl.after.current)
                 break;
 
@@ -89,18 +103,21 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter }) => {
 
     return (
         <div className="navbar">
+            <div className="header">
+                <h1>Infini-Memes</h1>
+            </div>
             <ul className="navlinks">
                 <li>
-                    <button onClick={handleFeedClick}> Twitter </button>
+                    <button className="navlink btn active" onClick={handleFeedClick}> Twitter </button>
                 </li>
                 <li>
-                    <button onClick={handleFeedClick}> Anime </button>
+                    <button className="navlink btn" onClick={handleFeedClick}> Anime </button>
                 </li>
                 <li>
-                    <button onClick={handleFeedClick}> memes </button>
+                    <button className="navlink btn" onClick={handleFeedClick}> memes </button>
                 </li>
                 <li>
-                    <button onClick={handleFeedClick}> IRL memes </button>
+                    <button className="navlink btn" onClick={handleFeedClick}> IRL memes </button>
                 </li>
             </ul>
 

@@ -7,6 +7,7 @@
 
 body {
   width: 100%;
+  height: auto;
   display: flex;
   flex-wrap: wrap;
   overflow-x: hidden;
@@ -31,58 +32,70 @@ body {
   top: 0;
 }
 
+.header {
+  width: 100%;
+  text-align: center;
+  background-color: #0885EC;
+  padding: 5px;
+}
+
 .navbar ul {
   width: 100%;
   display: flex;
   justify-content: space-around;
   list-style: none;
-  background-color: #0885EC;
 }
 
 .navbar ul li {
   width: 25%;
   display: flex;
   justify-content: center;
+
+}
+
+
+
+.active {
+  background-color: #167909 !important;
+}
+
+.navbar ul li button {
+  width: 100%;
+  height: 60px;
+  border: 0px;;
+  background-color: #0885EC;
+  color: #fff;
+  font-size: 17px;
   border: solid 1px #000;
 }
 
-.navbar ul li:hover {
+.navbar ul li button:hover {
   box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
   -webkit-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
   -moz-box-shadow: 0px 8px 14px 3px rgba(0,0,0,0.75);
 }
-
-.navbar ul li button {
-  width: 80%;
-  height: 60px;
-  border: 0px;;
-  background-color: transparent;
-  color: #fff;
-  font-size: 17px;
-}
-
-
 
 
 .feedList {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
-  height: 1000px;
+  min-height: 50vh;
   justify-content: space-around;
   margin: 80px 0px;
-  z-index: 5;
+  z-index: 10;
 }
 
 .error {
-  width: 70% ;
+  width: 80% ;
   margin: auto;
   height: 400px;
-  background-color: crimson;
-  font-size: 30px;
+  font-size: 1rem;
   color: #fff;
-  padding: 20px;
   font-family: fantasy;
+  display: flex;
+  align-items: center;
+  text-align: center;
 }
 
 .meme {
@@ -92,24 +105,6 @@ body {
   margin: 30px 10px;
   display: flex;
   align-items: center;
-}
-
-.loader{
-  width: 150px;
-  height: 150px;
-  position: relative;
-  margin: auto;
-}
-
-.loader div {
-  box-sizing: border-box;
- width: 100%;
- height: 100%;
- position: absolute;
- z-index: 10;
- border: 10px solid transparent;
- border-top: #551256;
- border-radius: 50%;
 }
 
 .feedList img {
@@ -128,3 +123,26 @@ body {
    border: 0px;
    
 }
+
+.loader{
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin: auto;
+  z-index: 10;
+}
+
+.loader div {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  border-radius: 50%;
+  border-top: 3px solid #0885EC; 
+  animation: loaderAnime 1s linear infinite;
+}
+
+ @keyframes loaderAnime {
+   0% {transform: rotate(0deg);}
+   50% {transform: rotate(180deg);}
+   100% {transform: rotate(360deg);}
+ }
