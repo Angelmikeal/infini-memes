@@ -12,12 +12,12 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
                         setFeed([]);
                         setLoading(true);
                         setFeed(subFeeds.twitter.arr.current)
-                    }else {
+                    } else {
                         setFeed([]);
                         setLoading(true);
                         setAfter('');
                         setSub("twitter_memes");
-                        window.scroll(0,0);
+                        window.scroll(0, 0);
                     }
                 }
                 break;
@@ -27,13 +27,12 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
                         setFeed([]);
                         setLoading(true);
                         setFeed(subFeeds.anime.arr.current)
-                    }else {
-                        
+                    } else {
                         setFeed([]);
                         setLoading(true);
                         setAfter('');
                         setSub("goodanimemes");
-                        window.scroll(0,0);
+                        window.scroll(0, 0);
                     }
                 }
                 break;
@@ -43,12 +42,12 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
                         setFeed([]);
                         setLoading(true);
                         setFeed(subFeeds.memes.arr.current)
-                    }else {
+                    } else {
                         setFeed([]);
                         setLoading(true);
                         setAfter('');
                         setSub("memes");
-                        window.scroll(0,0);
+                        window.scroll(0, 0);
                     }
                 }
                 break;
@@ -58,14 +57,14 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
                         setFeed([]);
                         setLoading(true);
                         setFeed(subFeeds.meirl.arr.current)
-                    }else {
+                    } else {
                         setFeed([]);
                         setLoading(true);
                         setAfter('');
                         setSub("meIRL");
-                        window.scroll(0,0);
+                        window.scroll(0, 0);
                     }
-                    
+
                 }
                 break;
             default:
@@ -85,30 +84,30 @@ const Navbar = ({ setFeed, setSub, sub, subFeeds, setAfter, setLoading }) => {
     const handleNextClick = (e) => {
         switch (sub) {
             case 'twitter_memes':
-                setLoading(true);
                 setFeed([]);
+                setLoading(true);
                 setAfter(subFeeds.twitter.after.current)
                 break;
             case 'goodanimemes':
-                setLoading(true);
                 setFeed([]);
+                setLoading(true);
                 setAfter(subFeeds.anime.after.current)
                 break;
             case 'memes':
-                setLoading(true);
                 setFeed([]);
+                setLoading(true);
                 setAfter(subFeeds.memes.after.current)
                 break;
             case 'meIRL':
-                setLoading(true);
                 setFeed([]);
+                setLoading(true);
                 setAfter(subFeeds.meirl.after.current)
                 break;
 
             default:
                 break;
         }
-        window.scroll(0,0);
+        window.scroll(0, 0);
     }
 
     return (
