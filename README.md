@@ -15,10 +15,8 @@ Infini-Memes is a Single Page Application (SPA) developed using React, leveragin
 1. Access the Infini-Memes application through your web browser.
 
 2. As you land on the home page, the application will start loading and displaying comedic images from various subreddits.
-
-3. Enjoy a steady stream of humorous content, and click on any meme to view it in a larger format.
-
-4. Navigate back and forth using the intuitive user interface to explore a plethora of hilarious memes.
+   
+3. Navigate back and forth using the intuitive user interface to explore a plethora of hilarious memes.
 
 
 ## Credits
